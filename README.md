@@ -2,6 +2,11 @@
 
 This Unity Editor Extensions allows you to select the viewing direction for a SceneView with the [Blender](https://www.blender.org/) -like hotkeys.
 
+e.g. Numpad 1/3/7 as switch front/right/top view.
+Numpad 5 as toggle orthographic projection.
+
+Click [日本語](./README_ja.md) for Japanese page if you need.
+
 
 ## Installation
 
