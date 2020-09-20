@@ -41,4 +41,4 @@ However, in the Unity Editor, already assigned the `2` key. If you are using Uni
 
 ## More information
 
-See [GitHub repository](https://github.com/nowsprinting/blender-like-sceneview-hotkeys) for more information.
+See [GitHub repository](https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys) for more information.

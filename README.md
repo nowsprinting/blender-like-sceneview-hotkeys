@@ -9,7 +9,7 @@ This Unity Editor Extensions allows you to select the viewing direction for a Sc
 
 1. Open Package Manager window (Window | Package Manager)
 2. Click `+`, and "Add package from git URL..."
-3. Input `https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git`, and click `Add`
+3. Input `https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git`, and click `Add`
 
 ### Unity 2019.2 or earlier
 
@@ -18,7 +18,7 @@ This Unity Editor Extensions allows you to select the viewing direction for a Sc
 3. Insert the follow line after `"dependencies": {`
 
 ```
-"com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git",
+"com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git",
 ```
 
 4. Reopen Unity project in Unity Editor
