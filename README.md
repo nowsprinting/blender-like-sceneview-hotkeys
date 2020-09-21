@@ -13,14 +13,17 @@ Click [日本語](./README_ja.md) for Japanese page if you need.
 ### Unity 2019.3 or newer
 
 1. Open Package Manager window (Window | Package Manager)
-2. Click `+`, and "Add package from git URL..."
+2. Click `+` on upper-left of window, and "Add package from git URL..."
+
+![](./Documentation~/add_package_from_git_url.png)
+
 3. Input `https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git`, and click `Add`
 
 ### Unity 2019.2 or earlier
 
 1. Close Unity Editor
 2. Open `Packages/manifest.json` by any Text editor
-3. Insert the follow line after `"dependencies": {`
+3. Insert the follow line after `"dependencies": {` , and save file.
 
 ```
 "com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git",
@@ -39,7 +42,7 @@ However, in the Unity Editor, already assigned the `2` key. If you are using Uni
 ## Features
 
 Implements some of Blender's hotkeys.
-See [Navigating- Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.
+See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.
 
 See [documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) for implemented hotkeys.
 

@@ -10,17 +10,20 @@ Click [English](./README.md) for English page if you need.
 
 ## インストール
 
-### Unity 2019.3 以降
+### Unity 2019.3 以降の場合
 
 1. Package Manager ウィンドウを開きます (Window | Package Manager)
-2. 右上の `+` をクリックし、続いて "Add package from git URL..." をクリックします
-3. 入力フィールドに `https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git` を入力して `Add` をクリックします
+2. 左上の `+` をクリックし、続いて "Add package from git URL..." をクリックします
 
-### Unity 2019.2 以前
+![](./Documentation~/add_package_from_git_url.png)
+
+3. 表示される入力フィールドに `https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git` を入力して `Add` をクリックします
+
+### Unity 2019.2 以前の場合
 
 1. Unityエディタを閉じます
 2. テキストエディタで `Packages/manifest.json` ファイルを開きます
-3. `"dependencies": {` の次の行に下の行を追加します
+3. `"dependencies": {` の次の行に下の行を追加して保存します
 
 ```
 "com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git",
@@ -39,7 +42,7 @@ Click [English](./README.md) for English page if you need.
 ## 機能
 
 いくつかの Blender ホットキーが実装されています。
-Blender のホットキーについては [Navigating- Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
+Blender のホットキーについては [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
 
 現時点で実装されているホットキー（すべてではありません）については [documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) ページを参照してください。
 
