@@ -1,5 +1,7 @@
 # Blender-like SceneView Hotkeys
 
+[![openupm](https://img.shields.io/npm/v/com.nowsprinting.blender-like-sceneview-hotkeys?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
+
 [Blender](https://www.blender.org/) と同じホットキーでSceneViewの視線方向を切り替えることができるUnityエディタ拡張です。
 
 例えば、テンキーの1/3/7で、正面/右/上からの視点に切り替えられます。
@@ -30,6 +32,19 @@ Click [English](./README.md) for English page if you need.
 ```
 
 4. 再度、Unityエディタでプロジェクトを開きます
+
+### openupm-cli を使用する場合
+
+1. [openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、下記コマンドを実行します
+
+```
+$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```
+
+### unitypackage を使用する場合
+
+1. OpenUPM のパッケージページ [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/) を開き、"Download installer.unitypackage" をクリックしてダウンロードします
+2. Unityエディタでプロジェクトを開き、ダウンロードした unitypackage ファイルをインポートします
 
 
 ## 設定

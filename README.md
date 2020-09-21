@@ -1,5 +1,7 @@
 # Blender-like SceneView Hotkeys
 
+[![openupm](https://img.shields.io/npm/v/com.nowsprinting.blender-like-sceneview-hotkeys?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
+
 This Unity Editor Extensions allows you to select the viewing direction for a SceneView with the [Blender](https://www.blender.org/) -like hotkeys.
 
 e.g. Numpad 1/3/7 as switch front/right/top view.
@@ -23,13 +25,26 @@ Click [日本語](./README_ja.md) for Japanese page if you need.
 
 1. Close Unity Editor
 2. Open `Packages/manifest.json` by any Text editor
-3. Insert the follow line after `"dependencies": {` , and save file.
+3. Insert the follow line after `"dependencies": {`, and save file.
 
 ```
 "com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git",
 ```
 
 4. Reopen Unity project in Unity Editor
+
+### Use openupm-cli
+
+1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run command below
+
+```
+$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```
+
+### Use unitypackage
+
+1. Download installer.unitypackage from OpenUPM's package page [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
+2. Open your Unity project by Unity Editor, import installer.unitypackage
 
 
 ## Settings
