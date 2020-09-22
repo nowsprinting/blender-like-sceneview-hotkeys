@@ -9,6 +9,7 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         /// <summary>
         /// Return singleton <c>Settings</c> instance.
         /// This Settings has only <c>UserSettingsRepository</c>.
+        /// Because if use `new Settings(string , string)`, an empty configuration file is created under ProjectSettings/ directory.
         /// </summary>
         internal static Settings Instance
         {

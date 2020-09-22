@@ -7,6 +7,8 @@ namespace BlenderLikeSceneViewHotkeys.Editor
     internal static class BlenderLikeSceneViewHotkeys
     {
         private const string PackageName = "com.nowsprinting.blender-like-sceneview-hotkeys";
+        private const float OrbitStepAngleDegrees = 15f;
+        private const float OrbitOppositeSideAngleDegrees = 180f;
 
         [UserSetting("Input", "Emulate Numpad")]
         private static readonly UserSetting<bool> EmulateNumpad = new UserSetting<bool>(MySettingsManager.Instance,
@@ -81,22 +83,22 @@ namespace BlenderLikeSceneViewHotkeys.Editor
                         sceneView.SetDirection(Vector3.down);
                         break;
                     case KeyCode.Keypad2:
-                        sceneView.Orbit(Vector3.left);
+                        sceneView.OrbitX(OrbitStepAngleDegrees * -1);
                         break;
                     case KeyCode.Keypad4:
-                        sceneView.Orbit(Vector3.up);
+                        sceneView.OrbitY(OrbitStepAngleDegrees);
                         break;
                     case KeyCode.Keypad6:
-                        sceneView.Orbit(Vector3.down);
+                        sceneView.OrbitY(OrbitStepAngleDegrees * -1);
                         break;
                     case KeyCode.Keypad8:
-                        sceneView.Orbit(Vector3.right);
+                        sceneView.OrbitX(OrbitStepAngleDegrees);
                         break;
                     case KeyCode.Keypad5:
                         sceneView.ToggleOrthographicProjection();
                         break;
                     case KeyCode.Keypad9:
-                        sceneView.InverseDirection();
+                        sceneView.OrbitY(OrbitOppositeSideAngleDegrees);
                         break;
                     // case KeyCode.Keypad0:
                     //     sceneView.ToggleLookFromMainCamera();

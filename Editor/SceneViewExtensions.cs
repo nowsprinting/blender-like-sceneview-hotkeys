@@ -10,14 +10,19 @@ namespace BlenderLikeSceneViewHotkeys.Editor
             sceneView.rotation = Quaternion.LookRotation(direction);
         }
 
-        public static void InverseDirection(this SceneView sceneView)
+        public static void OrbitX(this SceneView sceneView, float angle)
         {
-            sceneView.rotation *= Quaternion.AngleAxis(180f, Vector3.down);
+            sceneView.Orbit(angle, new Vector3(1f, 0f, 0f));
         }
 
-        public static void Orbit(this SceneView sceneView, Vector3 direction)
+        public static void OrbitY(this SceneView sceneView, float angle)
         {
-            sceneView.rotation *= Quaternion.AngleAxis(15f, direction);
+            sceneView.Orbit(angle, new Vector3(0f, 1f, 0f));
+        }
+
+        private static void Orbit(this SceneView sceneView, float angle, Vector3 axis)
+        {
+            sceneView.rotation *= Quaternion.AngleAxis(angle, axis);
         }
 
         public static void Pan(this SceneView sceneView, Vector3 direction)
@@ -38,19 +43,20 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         public static void ZoomToSelectedObject(this SceneView sceneView)
         {
             // TODO: same as shift + F
+            // use `Selection.activeTransform` and `SceneView.LookAtDirect`
         }
 
         public static void ZoomIn(this SceneView sceneView)
         {
-            Zoom(sceneView, Vector3.forward);
+            sceneView.Zoom(Vector3.forward);
         }
 
         public static void ZoomOut(this SceneView sceneView)
         {
-            Zoom(sceneView, Vector3.back);
+            sceneView.Zoom(Vector3.back);
         }
 
-        private static void Zoom(SceneView sceneView, Vector3 normalizedDirection)
+        private static void Zoom(this SceneView sceneView, Vector3 normalizedDirection)
         {
             // TODO:
         }
