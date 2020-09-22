@@ -8,6 +8,10 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         public static void SetDirection(this SceneView sceneView, Vector3 direction)
         {
             sceneView.rotation = Quaternion.LookRotation(direction);
+            if (direction == Vector3.down || direction == Vector3.up)
+            {
+                sceneView.rotation *= Quaternion.AngleAxis(180f, new Vector3(0f, 0f, 1f));
+            }
         }
 
         public static void OrbitX(this SceneView sceneView, float angle)
