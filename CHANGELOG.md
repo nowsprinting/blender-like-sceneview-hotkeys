@@ -1,4 +1,6 @@
 ## Unreleased
+
+## 0.1.1
 - Fix rotation at set top/bottom view
 - Fix orbit angle
 
