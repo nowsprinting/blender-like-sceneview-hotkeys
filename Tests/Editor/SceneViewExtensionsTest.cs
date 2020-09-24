@@ -93,6 +93,30 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         }
 
         [Test]
+        public void OppositeSide()
+        {
+            _sceneView.SetDirection(Vector3.forward);
+            _sceneView.OppositeSide();
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(0f, 180f, 0f)).Using(_comparer));
+        }
+
+        [Test]
+        public void OppositeSide_topView_to_bottomView()
+        {
+            _sceneView.SetDirection(Vector3.down);
+            _sceneView.OppositeSide();
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(270f, 180f, 0f)));
+        }
+
+        [Test]
+        public void OppositeSide_bottomView_to_topView()
+        {
+            _sceneView.SetDirection(Vector3.up);
+            _sceneView.OppositeSide();
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(90f, 180f, 0f)));
+        }
+
+        [Test]
         public void ToggleOrthographicProjection_toggleOnce()
         {
             var orthographic = _sceneView.orthographic;

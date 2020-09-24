@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace BlenderLikeSceneViewHotkeys.Editor
@@ -16,17 +17,30 @@ namespace BlenderLikeSceneViewHotkeys.Editor
 
         public static void OrbitX(this SceneView sceneView, float angle)
         {
-            sceneView.Orbit(angle, new Vector3(1f, 0f, 0f));
+            sceneView.rotation *= Quaternion.AngleAxis(angle, new Vector3(1f, 0f, 0f));
         }
 
         public static void OrbitY(this SceneView sceneView, float angle)
         {
-            sceneView.Orbit(angle, new Vector3(0f, 1f, 0f));
+            var rotationX = Quaternion.Euler(new Vector3(sceneView.rotation.eulerAngles.x, 0f, 0f));
+            sceneView.rotation *= Quaternion.Inverse(rotationX);
+            sceneView.rotation *= Quaternion.AngleAxis(angle, new Vector3(0f, 1f, 0f));
+            sceneView.rotation *= rotationX;
         }
 
-        private static void Orbit(this SceneView sceneView, float angle, Vector3 axis)
+        public static void OppositeSide(this SceneView sceneView)
         {
-            sceneView.rotation *= Quaternion.AngleAxis(angle, axis);
+            var rotationAngleX = sceneView.rotation.eulerAngles.x;
+            var rotationAngleY = sceneView.rotation.eulerAngles.y;
+            if ((Math.Abs(rotationAngleX - 90f) == 0f || Math.Abs(rotationAngleX - 270f) == 0f) &&
+                (rotationAngleY == 0f || Math.Abs(rotationAngleY - 180f) == 0f))
+            {
+                sceneView.OrbitX(180f);
+            }
+            else
+            {
+                sceneView.OrbitY(180f);
+            }
         }
 
         public static void Pan(this SceneView sceneView, Vector3 direction)

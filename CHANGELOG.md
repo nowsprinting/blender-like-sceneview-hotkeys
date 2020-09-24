@@ -1,5 +1,6 @@
 ## Unreleased
 - Fix rotation at set top/bottom view
+- Fix orbit angle
 
 ## 0.1.0
 - Assign hotkeys: 1/3/7 and control + 1/3/7 as select the viewing direction
