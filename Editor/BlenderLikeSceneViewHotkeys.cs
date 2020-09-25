@@ -8,6 +8,9 @@ namespace BlenderLikeSceneViewHotkeys.Editor
     {
         private const string PackageName = "com.nowsprinting.blender-like-sceneview-hotkeys";
         private const float OrbitStepAngleDegrees = 15f;
+        private const float RollStepAngleDegrees = 15f;
+        private const float PanDistance = 0.035f;
+        private const float ZoomDistance = 0.15f;
 
         [UserSetting("Input", "Emulate Numpad")]
         private static readonly UserSetting<bool> EmulateNumpad = new UserSetting<bool>(MySettingsManager.Instance,
@@ -39,7 +42,6 @@ namespace BlenderLikeSceneViewHotkeys.Editor
 
             if (e.control)
             {
-                // with control key
                 switch (key)
                 {
                     case KeyCode.Keypad1:
@@ -51,25 +53,39 @@ namespace BlenderLikeSceneViewHotkeys.Editor
                     case KeyCode.Keypad7:
                         sceneView.SetDirection(Vector3.up);
                         break;
-                    // case KeyCode.Keypad2:
-                    //     sceneView.Pan(Vector3.down);
-                    //     break;
-                    // case KeyCode.Keypad4:
-                    //     sceneView.Pan(Vector3.left);
-                    //     break;
-                    // case KeyCode.Keypad6:
-                    //     sceneView.Pan(Vector3.right);
-                    //     break;
-                    // case KeyCode.Keypad8:
-                    //     sceneView.Pan(Vector3.up);
-                    //     break;
+                    case KeyCode.Keypad2:
+                        sceneView.Pan(Vector3.down, PanDistance);
+                        break;
+                    case KeyCode.Keypad4:
+                        sceneView.Pan(Vector3.left, PanDistance);
+                        break;
+                    case KeyCode.Keypad6:
+                        sceneView.Pan(Vector3.right, PanDistance);
+                        break;
+                    case KeyCode.Keypad8:
+                        sceneView.Pan(Vector3.up, PanDistance);
+                        break;
+                    default:
+                        return;
+                }
+            }
+            else if (e.shift)
+            {
+                switch (key)
+                {
+                    case KeyCode.Keypad4:
+                        sceneView.Roll(RollStepAngleDegrees * -1);
+                        break;
+                    case KeyCode.Keypad6:
+                        sceneView.Roll(RollStepAngleDegrees);
+                        break;
                     default:
                         return;
                 }
             }
             else
             {
-                // without control key
+                // without control/shift key
                 switch (key)
                 {
                     case KeyCode.Keypad1:
@@ -105,12 +121,12 @@ namespace BlenderLikeSceneViewHotkeys.Editor
                     // case KeyCode.KeypadPeriod:
                     //     sceneView.ZoomToSelectedObject();
                     //     break;
-                    // case KeyCode.KeypadPlus:
-                    //     sceneView.ZoomIn();
-                    //     break;
-                    // case KeyCode.KeypadMinus:
-                    //     sceneView.ZoomOut();
-                    //     break;
+                    case KeyCode.KeypadPlus:
+                        sceneView.Zoom(ZoomDistance);
+                        break;
+                    case KeyCode.KeypadMinus:
+                        sceneView.Zoom(ZoomDistance * -1);
+                        break;
                     default:
                         return;
                 }

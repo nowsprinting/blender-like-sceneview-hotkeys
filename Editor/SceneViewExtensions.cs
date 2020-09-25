@@ -47,9 +47,23 @@ namespace BlenderLikeSceneViewHotkeys.Editor
             }
         }
 
-        public static void Pan(this SceneView sceneView, Vector3 direction)
+        public static void Roll(this SceneView sceneView, float angle)
         {
-            // TODO: move sceneView.pivot
+            sceneView.rotation *= Quaternion.AngleAxis(angle, s_zAxis);
+        }
+
+        public static void Pan(this SceneView sceneView, Vector3 direction, float distanceCoefficient)
+        {
+            var movingDistance = sceneView.size * distanceCoefficient;
+            sceneView.pivot += sceneView.rotation * direction * movingDistance;
+        }
+
+        public static void Zoom(this SceneView sceneView, float distance)
+        {
+            if (sceneView.size >= distance)
+            {
+                sceneView.size -= distance;
+            }
         }
 
         public static void ToggleOrthographicProjection(this SceneView sceneView)
@@ -66,21 +80,6 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         {
             // TODO: same as shift + F
             // use `Selection.activeTransform` and `SceneView.LookAtDirect`
-        }
-
-        public static void ZoomIn(this SceneView sceneView)
-        {
-            sceneView.Zoom(Vector3.forward);
-        }
-
-        public static void ZoomOut(this SceneView sceneView)
-        {
-            sceneView.Zoom(Vector3.back);
-        }
-
-        private static void Zoom(this SceneView sceneView, Vector3 normalizedDirection)
-        {
-            // TODO:
         }
     }
 }

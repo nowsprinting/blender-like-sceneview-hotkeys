@@ -11,7 +11,7 @@ Select the viewing direction for a SceneView with the [Blender](https://www.blen
 - `Numpad3`: Set right view
 - `Numpad7`: Set top view
 
-With push control key:
+With hold control key:
 
 - `⌃` + `Numpad1`: Set back view
 - `⌃` + `Numpad3`: Set left view
@@ -23,13 +23,33 @@ With push control key:
 - `Numpad5`: Toggle perspective/orthographic projection
 
 
-### Rotate the view around the pivot (orbit)
+### Orbit
 
-- `Numpad2`: Change angle step 15 degrees down
-- `Numpad4`: Change angle step 15 degrees left
-- `Numpad6`: Change angle step 15 degrees right
-- `Numpad8`: Change angle step 15 degrees up
+- `Numpad2`: Change angle 15 degrees down
+- `Numpad4`: Change angle 15 degrees left
+- `Numpad6`: Change angle 15 degrees right
+- `Numpad8`: Change angle 15 degrees up
 - `Numpad9`: Switches to the opposite side of the view
+
+
+### Roll
+
+- `⇧` + `Numpad4`: Rotate the camera 15 degrees to left
+- `⇧` + `Numpad6`: Rotate the camera 15 degrees to right
+
+
+### Pan
+
+- `⌃` + `Numpad2`: Move the view down
+- `⌃` + `Numpad4`: Move the view left
+- `⌃` + `Numpad6`: Move the view right
+- `⌃` + `Numpad8`: Move the view up
+
+
+### Zoom
+
+- `NumpadPlus`: Move the camera forwards
+- `NumpadMinus`: Move the camera backwards
 
 
 ### Emulate Numpad

@@ -10,6 +10,24 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         private readonly SceneView _sceneView = ScriptableObject.CreateInstance<SceneView>();
         private readonly Vector3EqualityComparer _comparer = new Vector3EqualityComparer(0.1f);
 
+        [SetUp]
+        public void ResetSceneView()
+        {
+            _sceneView.rotation = Quaternion.LookRotation(new Vector3(-1f, -0.7f, -1f));
+            _sceneView.pivot = Vector3.zero;
+            _sceneView.size = 10f;
+            _sceneView.orthographic = false;
+        }
+
+        [Test]
+        public void CheckDefaultProperties()
+        {
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(26.3f, 225f, 0f)).Using(_comparer));
+            Assert.That(_sceneView.pivot, Is.EqualTo(new Vector3(0f, 0f, 0f)));
+            Assert.That(_sceneView.size, Is.EqualTo(10f));
+            Assert.That(_sceneView.orthographic, Is.EqualTo(false));
+        }
+
         [Test]
         public void SetDirection_front()
         {
@@ -117,20 +135,102 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         }
 
         [Test]
+        public void Roll_front_to_right()
+        {
+            _sceneView.SetDirection(Vector3.back);
+            _sceneView.Roll(15f);
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(0f, 180f, 15f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Roll_right_to_left()
+        {
+            _sceneView.SetDirection(Vector3.right);
+            _sceneView.Roll(-15f);
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(0f, 90f, 345f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Roll_top_left()
+        {
+            _sceneView.SetDirection(Vector3.down);
+            _sceneView.Roll(-15f);
+            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(90f, 195f, 0f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Pan_front_to_up()
+        {
+            _sceneView.SetDirection(Vector3.back);
+            _sceneView.Pan(Vector3.up, 0.2f);
+            Assert.That(_sceneView.pivot, Is.EqualTo(new Vector3(0f, 2f, 0f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Pan_back_to_left()
+        {
+            _sceneView.SetDirection(Vector3.forward);
+            _sceneView.Pan(Vector3.left, 0.2f);
+            Assert.That(_sceneView.pivot, Is.EqualTo(new Vector3(-2f, 0f, 0f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Pan_right_to_left()
+        {
+            _sceneView.SetDirection(Vector3.right);
+            _sceneView.Pan(Vector3.left, 0.2f);
+            Assert.That(_sceneView.pivot, Is.EqualTo(new Vector3(0f, 0f, 2f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Pan_bottom_to_down()
+        {
+            _sceneView.SetDirection(Vector3.up);
+            _sceneView.Pan(Vector3.down, 0.2f);
+            Assert.That(_sceneView.pivot, Is.EqualTo(new Vector3(0f, 0f, -2f)).Using(_comparer));
+        }
+
+        [Test]
+        public void Zoom_in()
+        {
+            _sceneView.Zoom(2f);
+            Assert.That(_sceneView.size, Is.EqualTo(8f));
+        }
+
+        [Test]
+        public void Zoom_in_toZero()
+        {
+            _sceneView.Zoom(10f);
+            Assert.That(_sceneView.size, Is.EqualTo(0f));
+        }
+
+        [Test]
+        public void Zoom_in_notBeMinus()
+        {
+            _sceneView.Zoom(11f);
+            Assert.That(_sceneView.size, Is.EqualTo(10f));
+        }
+
+        [Test]
+        public void Zoom_out()
+        {
+            _sceneView.Zoom(-2f);
+            Assert.That(_sceneView.size, Is.EqualTo(12f));
+        }
+
+        [Test]
         public void ToggleOrthographicProjection_toggleOnce()
         {
-            var orthographic = _sceneView.orthographic;
             _sceneView.ToggleOrthographicProjection();
-            Assert.That(_sceneView.orthographic, Is.EqualTo(!orthographic)); // inversed
+            Assert.That(_sceneView.orthographic, Is.EqualTo(true));
         }
 
         [Test]
         public void ToggleOrthographicProjection_toggleTwice()
         {
-            var orthographic = _sceneView.orthographic;
             _sceneView.ToggleOrthographicProjection();
             _sceneView.ToggleOrthographicProjection(); // twice
-            Assert.That(_sceneView.orthographic, Is.EqualTo(orthographic)); // origin
+            Assert.That(_sceneView.orthographic, Is.EqualTo(false));
         }
     }
 }

@@ -1,4 +1,7 @@
 ## Unreleased
+- Assign hotkeys: shift + 4/6 as roll
+- Assign hotkeys: control + 2/4/6/8 as pan
+- Assign hotkeys: +/- as zoom
 
 ## 0.1.1
 - Fix rotation at set top/bottom view
