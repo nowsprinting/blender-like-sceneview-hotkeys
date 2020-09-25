@@ -6,34 +6,38 @@ namespace BlenderLikeSceneViewHotkeys.Editor
 {
     public static class SceneViewExtensions
     {
+        private static readonly Vector3 s_xAxis = new Vector3(1f, 0f, 0f);
+        private static readonly Vector3 s_yAxis = new Vector3(0f, 1f, 0f);
+        private static readonly Vector3 s_zAxis = new Vector3(0f, 0f, 1f);
+        private static readonly Vector3 s_topView = new Vector3(90f, 180f, 0f);
+        private static readonly Vector3 s_bottomView = new Vector3(270f, 180f, 0f);
+
         public static void SetDirection(this SceneView sceneView, Vector3 direction)
         {
             sceneView.rotation = Quaternion.LookRotation(direction);
             if (direction == Vector3.down || direction == Vector3.up)
             {
-                sceneView.rotation *= Quaternion.AngleAxis(180f, new Vector3(0f, 0f, 1f));
+                sceneView.rotation *= Quaternion.AngleAxis(180f, s_zAxis);
             }
         }
 
         public static void OrbitX(this SceneView sceneView, float angle)
         {
-            sceneView.rotation *= Quaternion.AngleAxis(angle, new Vector3(1f, 0f, 0f));
+            sceneView.rotation *= Quaternion.AngleAxis(angle, s_xAxis);
         }
 
         public static void OrbitY(this SceneView sceneView, float angle)
         {
             var rotationX = Quaternion.Euler(new Vector3(sceneView.rotation.eulerAngles.x, 0f, 0f));
             sceneView.rotation *= Quaternion.Inverse(rotationX);
-            sceneView.rotation *= Quaternion.AngleAxis(angle, new Vector3(0f, 1f, 0f));
+            sceneView.rotation *= Quaternion.AngleAxis(angle, s_yAxis);
             sceneView.rotation *= rotationX;
         }
 
         public static void OppositeSide(this SceneView sceneView)
         {
-            var rotationAngleX = sceneView.rotation.eulerAngles.x;
-            var rotationAngleY = sceneView.rotation.eulerAngles.y;
-            if ((Math.Abs(rotationAngleX - 90f) == 0f || Math.Abs(rotationAngleX - 270f) == 0f) &&
-                (rotationAngleY == 0f || Math.Abs(rotationAngleY - 180f) == 0f))
+            var rotationEulerAngles = sceneView.rotation.eulerAngles;
+            if (rotationEulerAngles == s_topView || rotationEulerAngles == s_bottomView)
             {
                 sceneView.OrbitX(180f);
             }
