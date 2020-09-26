@@ -1,4 +1,6 @@
 ## Unreleased
+
+## 0.2.0
 - Assign hotkeys: shift + 4/6 as roll
 - Assign hotkeys: control + 2/4/6/8 as pan
 - Assign hotkeys: +/- as zoom
