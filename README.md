@@ -57,9 +57,9 @@ However, in the Unity Editor, already assigned the `2` key. If you are using Uni
 ## Features
 
 Implements some of Blender's hotkeys.
-See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.
+See [Documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) page for implemented hotkeys.
 
-See [documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) for implemented hotkeys.
+See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.
 
 
 ## License

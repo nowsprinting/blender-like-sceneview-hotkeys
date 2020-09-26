@@ -57,9 +57,9 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 ## 機能
 
 いくつかの Blender ホットキーが実装されています。
-Blender のホットキーについては [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
+現時点で実装されているホットキーについては [Documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) ページを参照してください。
 
-現時点で実装されているホットキー（すべてではありません）については [documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) ページを参照してください。
+Blender のホットキーについては [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
 
 
 ## ライセンス
