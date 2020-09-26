@@ -19,7 +19,7 @@ Click [English](./README.md) for English page if you need.
 
 ![](./Documentation~/add_package_from_git_url.png)
 
-3. 表示される入力フィールドに `https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git` を入力して `Add` をクリックします
+3. 表示される入力フィールドに `https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git` を入力して `Add` をクリックします
 
 ### Unity 2019.2 以前の場合
 
@@ -28,7 +28,7 @@ Click [English](./README.md) for English page if you need.
 3. `"dependencies": {` の次の行に下の行を追加して保存します
 
 ```
-"com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/BlenderLikeSceneViewHotkeys.git",
+"com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git",
 ```
 
 4. 再度、Unityエディタでプロジェクトを開きます
@@ -57,7 +57,7 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 ## 機能
 
 いくつかの Blender ホットキーが実装されています。
-現時点で実装されているホットキーについては [Documentation](./Documentation~/BlenderLikeSceneViewHotkeys.md) ページを参照してください。
+現時点で実装されているホットキーについては [Documentation](./Documentation~/blender-like-sceneview-hotkeys.md) ページを参照してください。
 
 Blender のホットキーについては [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
 
