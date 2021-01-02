@@ -201,7 +201,9 @@ namespace BlenderLikeSceneViewHotkeys.Editor
         public void Zoom_in_toZero()
         {
             _sceneView.Zoom(10f);
-            Assert.That(_sceneView.size, Is.EqualTo(0f));
+
+            var comparer = new FloatEqualityComparer(0.001f);
+            Assert.That(_sceneView.size, Is.EqualTo(0f).Using(comparer));   // fail in Unity 2019 or later, if not use comparer
         }
 
         [Test]
