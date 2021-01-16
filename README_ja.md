@@ -12,7 +12,24 @@ Click [English](./README.md) for English page if you need.
 
 ## インストール
 
-### Unity 2019.3 以降の場合
+3通りの方法でインストールできます
+
+### unitypackage を使用する場合
+
+1. OpenUPM のパッケージページ [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/) を開き、右上の "Get installer.unitypackage" をクリックしてダウンロードします
+2. Unityエディタでプロジェクトを開き、ダウンロードした unitypackage ファイルをインポートします
+
+### openupm-cli を使用する場合
+
+1. [openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、ターミナルから下記コマンドを実行します
+
+```
+$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```
+
+### Unity Package Managerで直接指定する場合
+
+#### Unity 2019.3 以降の場合
 
 1. Package Manager ウィンドウを開きます (Window | Package Manager)
 2. 左上の `+` をクリックし、続いて "Add package from git URL..." をクリックします
@@ -21,7 +38,7 @@ Click [English](./README.md) for English page if you need.
 
 3. 表示される入力フィールドに `https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git` を入力して `Add` をクリックします
 
-### Unity 2019.2 以前の場合
+#### Unity 2019.2 以前の場合
 
 1. Unityエディタを閉じます
 2. テキストエディタで `Packages/manifest.json` ファイルを開きます
@@ -32,19 +49,6 @@ Click [English](./README.md) for English page if you need.
 ```
 
 4. 再度、Unityエディタでプロジェクトを開きます
-
-### openupm-cli を使用する場合
-
-1. [openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、下記コマンドを実行します
-
-```
-$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
-```
-
-### unitypackage を使用する場合
-
-1. OpenUPM のパッケージページ [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/) を開き、"Download installer.unitypackage" をクリックしてダウンロードします
-2. Unityエディタでプロジェクトを開き、ダウンロードした unitypackage ファイルをインポートします
 
 
 ## 設定

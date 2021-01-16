@@ -13,7 +13,24 @@ Click [日本語](./README_ja.md) for Japanese page if you need.
 
 ## Installation
 
-### Unity 2019.3 or newer
+You can install in 3 ways.
+
+### By unitypackage
+
+1. Get installer.unitypackage from OpenUPM's package page [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
+2. Open your Unity project by Unity Editor, import installer.unitypackage
+
+### By openupm-cli
+
+1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run command below
+
+```
+$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```
+
+### By Unity Package Manager directly
+
+#### Unity 2019.3 or newer
 
 1. Open Package Manager window (Window | Package Manager)
 2. Click `+` on upper-left of window, and "Add package from git URL..."
@@ -22,7 +39,7 @@ Click [日本語](./README_ja.md) for Japanese page if you need.
 
 3. Input `https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git`, and click `Add`
 
-### Unity 2019.2 or earlier
+#### Unity 2019.2 or earlier
 
 1. Close Unity Editor
 2. Open `Packages/manifest.json` by any Text editor
@@ -33,19 +50,6 @@ Click [日本語](./README_ja.md) for Japanese page if you need.
 ```
 
 4. Reopen Unity project in Unity Editor
-
-### Use openupm-cli
-
-1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run command below
-
-```
-$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
-```
-
-### Use unitypackage
-
-1. Download installer.unitypackage from OpenUPM's package page [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
-2. Open your Unity project by Unity Editor, import installer.unitypackage
 
 
 ## Settings
