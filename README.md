@@ -8,12 +8,12 @@ This Unity Editor Extensions allows you to select the viewing direction for a Sc
 e.g. Numpad 1/3/7 as switch front/right/top view.
 Numpad 5 as toggle orthographic projection.
 
-Click [日本語](./README_ja.md) for Japanese page if you need.
+Click [日本語](./README_ja.md) for the Japanese page if you need.
 
 
 ## Installation
 
-You can install in 3 ways.
+You can install it in 3 ways.
 
 ### By unitypackage
 
@@ -22,7 +22,7 @@ You can install in 3 ways.
 
 ### By openupm-cli
 
-1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run command below
+1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run the command below
 
 ```
 $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
@@ -33,7 +33,7 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 #### Unity 2019.3 or newer
 
 1. Open Package Manager window (Window | Package Manager)
-2. Click `+` on upper-left of window, and "Add package from git URL..."
+2. Click `+` on the upper-left of a window, and "Add package from git URL..."
 
 ![](./Documentation~/add_package_from_git_url.png)
 
@@ -43,7 +43,7 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 
 1. Close Unity Editor
 2. Open `Packages/manifest.json` by any Text editor
-3. Insert the follow line after `"dependencies": {`, and save file.
+3. Insert the following line after `"dependencies": {`, and save the file.
 
 ```
 "com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git",
@@ -54,14 +54,14 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 
 ## Settings
 
-If your keyboard without a numpad, open preferences... | Blender-like SceneView Hotkeys, and turn on `Emulate Numpad`.
+If your keyboard without a Numpad, open preferences... | Blender-like SceneView Hotkeys, and turn on `Emulate Numpad`.
 
 However, in the Unity Editor, already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.
 
 
 ## Features
 
-Implements some of Blender's hotkeys.
+Some of Blender's hotkeys Implement.
 See [Documentation](./Documentation~/blender-like-sceneview-hotkeys.md) page for implemented hotkeys.
 
 See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.

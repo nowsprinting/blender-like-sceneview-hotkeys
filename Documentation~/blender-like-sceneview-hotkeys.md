@@ -49,12 +49,12 @@ With hold control key:
 ### Zoom
 
 - `NumpadPlus`: Move the camera forwards
-- `NumpadMinus`: Move the camera backwards
+- `NumpadMinus`: Move the camera backward
 
 
 ### Emulate Numpad
 
-If your keyboard without a numpad, open preferences... | Blender-like SceneView Hotkeys, and turn on `Emulate Numpad`.
+If your keyboard without a Numpad, open preferences... | Blender-like SceneView Hotkeys, and turn on `Emulate Numpad`.
 
 However, in the Unity Editor, already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.
 
