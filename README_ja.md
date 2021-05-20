@@ -24,8 +24,8 @@ Click [English](./README.md) for English page if you need.
 
 1. [openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、ターミナルから下記コマンドを実行します
 
-```
-$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```bash
+openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 ```
 
 ### Unity Package Managerで直接指定する場合
@@ -37,7 +37,11 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 
 ![](./Documentation~/add_package_from_git_url.png)
 
-3. 表示される入力フィールドに `https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git` を入力して `Add` をクリックします
+3. 表示される入力フィールドに次のURLを入力して `Add` をクリックします
+
+```
+https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git
+```
 
 #### Unity 2019.2 以前の場合
 

@@ -24,8 +24,8 @@ You can install it in 3 ways.
 
 1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run the command below
 
-```
-$ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```bash
+openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 ```
 
 ### By Unity Package Manager directly
@@ -37,7 +37,11 @@ $ openupm add com.nowsprinting.blender-like-sceneview-hotkeys
 
 ![](./Documentation~/add_package_from_git_url.png)
 
-3. Input `https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git`, and click `Add`
+3. Enter the following URL and click "Add"
+
+```
+https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git
+```
 
 #### Unity 2019.2 or earlier
 
