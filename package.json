@@ -7,6 +7,7 @@
   "homepage": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys",
   "license": "MIT",
   "author": "nowsprinting <hasegawa@hubsys.co.jp> (https://github.com/nowsprinting)",
+  "changelogUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/releases",
   "keywords": [
     "sceneview",
     "hotkey",
