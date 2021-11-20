@@ -1,5 +1,4 @@
 name: Release when bump version in package.json
-# After tagged, openupm.com will pick up the tag and publish UPM package automatically.
 
 on:
   push:
@@ -29,6 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: steps.checkTag.outputs.exists == 'false'
+        # Create tag when publish release. After tagged, openupm.com gets the tag and automatically publishes the UPM package.
 
       - uses: 8398a7/action-slack@v3
         with:
