@@ -80,6 +80,8 @@ MIT License
 
 Open an issue or create a pull request.
 
+Be grateful if you could label the PR as `enhancement`, `bug`, `chore` and `documentation`. See [PR Labeler settings](.github/pr-labeler.yml) for automatically labeling from the branch name.
+
 
 ## Release workflow
 
@@ -87,8 +89,9 @@ Bump version in package.json on default branch.
 Or run [Create release pull request](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/create_release_pr.yml) workflow and merge PR.
 
 Then, Will do the release process automatically by [Release when bump version](.github/workflows/release_when_bump_version.yml) workflow.
+And after tagged, OpenUPM retrieves the tag and updates it.
 
-Do **not** manually operation the following operations:
+Do **NOT** manually operation the following operations:
 
 - Create release tag
 - Publish draft releases
