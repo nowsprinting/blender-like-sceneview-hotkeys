@@ -1,5 +1,4 @@
 name: Release when bump version in package.json
-# After tagged, openupm.com will pick up the tag and publish UPM package automatically.
 
 on:
   push:
@@ -21,10 +20,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Test a tag does not exist
-        run: |
-          test ${{ steps.checkTag.outputs.exists }} = false
-
       - uses: release-drafter/release-drafter@v5
         with:
           config-name: release-drafter.yml
@@ -32,6 +27,8 @@ jobs:
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: steps.checkTag.outputs.exists == 'false'
+        # Create tag when publish release. After tagged, openupm.com gets the tag and automatically publishes the UPM package.
 
       - uses: 8398a7/action-slack@v3
         with:
@@ -42,4 +39,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: always()
+        if: steps.checkTag.outputs.exists == 'false'
