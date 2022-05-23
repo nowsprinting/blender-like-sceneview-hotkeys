@@ -1,42 +1,50 @@
-name: Release when bump version in package.json
+name: Release if bump version number
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'package.json'
+      - package.json
 
 jobs:
-  release:
+  check-bump-version:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: nyaa8/package-version@v1
-      - uses: mukunku/tag-exists-action@v1.0.0
-        id: checkTag
-        with:
-          tag: v${{ env.PACKAGE_VERSION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      new-version: ${{ steps.diff.outputs.version }}
 
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 100
+
+      - name: Get version number diff
+        run: |
+          version="$(git diff ${{ github.event.before }}..${{ github.event.after }} package.json | sed -nr '/^\+ +\"version\":/p' | sed -r 's/^.*\"([0-9a-z\.\-\+]+)\"*.$/\1/')"
+          echo "::set-output name=version::$version"
+        id: diff
+
+  release:
+    needs: check-bump-version
+    if: ${{ needs.check-bump-version.outputs.new-version }}
+    runs-on: ubuntu-latest
+
+    steps:
       - uses: release-drafter/release-drafter@v5
         with:
           config-name: release-drafter.yml
-          version: v${{ env.PACKAGE_VERSION }}
+          version: v${{ needs.check-bump-version.outputs.new-version }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: steps.checkTag.outputs.exists == 'false'
-        # Create tag when publish release. After tagged, openupm.com gets the tag and automatically publishes the UPM package.
+        # After tagged, openupm.com gets the tag and automatically publishes the UPM package.
 
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
-          fields: repo,message,job,took
+          fields: repo,message,job,pullRequest
           mention: here
           if_mention: failure
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: steps.checkTag.outputs.exists == 'false'
