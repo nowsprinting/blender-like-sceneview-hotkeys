@@ -21,8 +21,9 @@ jobs:
 
       - name: Generate next version number (remove prefix)
         run: |
-          version="$(echo ${{ steps.get-draft-release.outputs.tag_name }} | sed -r 's/^.*([0-9]+\.[0-9]+\.[0-9]+[0-9a-z\-\+]*)/\1/')"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
+          tag_with_prefix=${{ steps.get-draft-release.outputs.tag_name }}
+          without_prefix=${tag_with_prefix:1}
+          echo "version=$without_prefix" >> "$GITHUB_OUTPUT"
         id: next-version
 
       - uses: actions/checkout@v3
