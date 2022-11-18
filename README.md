@@ -85,8 +85,8 @@ Be grateful if you could label the PR as `enhancement`, `bug`, `chore` and `docu
 
 ## Release workflow
 
-Bump version in package.json on default branch.
-Or run [Create release pull request](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/create-release-pr.yml) workflow and merge PR.
+Run `Actions | Create release pull request | Run workflow` and merge created PR.
+(Or bump version in package.json on default branch)
 
 Then, Will do the release process automatically by [Release](.github/workflows/release.yml) workflow.
 And after tagged, OpenUPM retrieves the tag and updates it.
