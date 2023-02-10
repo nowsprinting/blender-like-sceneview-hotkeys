@@ -1,5 +1,5 @@
 {
-    "name": "BlenderLikeSceneViewHotkeys.Tests.Editor",
+    "name": "BlenderLikeSceneViewHotkeys.Editor.Tests",
     "references": [
         "BlenderLikeSceneViewHotkeys.Editor"
     ],
