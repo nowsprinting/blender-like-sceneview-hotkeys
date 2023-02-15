@@ -1,5 +1,6 @@
 {
     "name": "BlenderLikeSceneViewHotkeys.Editor.Tests",
+    "rootNamespace": "BlenderLikeSceneViewHotkeys",
     "references": [
         "BlenderLikeSceneViewHotkeys.Editor"
     ],
