@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// Copyright (c) 2020-2023 Koji Hasegawa.
+// This software is released under the MIT License.
+
+using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools.Utils;

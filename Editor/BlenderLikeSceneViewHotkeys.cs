@@ -1,3 +1,6 @@
+// Copyright (c) 2020-2023 Koji Hasegawa.
+// This software is released under the MIT License.
+
 using UnityEditor;
 using UnityEditor.SettingsManagement;
 using UnityEngine;
