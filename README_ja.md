@@ -23,7 +23,9 @@ Blender のホットキーについては [Navigating - Blender Manual](https://
 
 ## 設定
 
-テンキーが無い場合は、Preferences... | Blender-like SceneView Hotkeys を開き、`Emulate Numpad`をonにすることでキーボードの数字キーで操作できます。
+テンキーが無い場合は、
+**Preferences > Blender-like SceneView Hotkeys**
+を開き、**Emulate Numpad** をonにすることでキーボードの数字キーで操作できます。
 
 ただし、Unityエディタではすでに`2`キーに機能が割り当てられています。Unity 2019以降であれば Shortcuts Manager で割り当てを変更できます。
 

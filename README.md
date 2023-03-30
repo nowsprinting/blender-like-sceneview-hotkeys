@@ -23,7 +23,9 @@ See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/edit
 
 ## Settings
 
-If your keyboard without a Numpad, open preferences... | Blender-like SceneView Hotkeys, and turn on `Emulate Numpad`.
+If your keyboard without a Numpad, open
+**Preferences > Blender-like SceneView Hotkeys**
+, and turn on **Emulate Numpad**.
 
 However, in the Unity Editor, already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.
 
