@@ -79,3 +79,32 @@ MIT License
 ## コントリビュート
 
 Issue や Pull request を歓迎します。日本語でokです！
+
+
+Pull Requestには `enhancement`, `bug`, `chore`, `documentation` といったラベルを付けてもらえるとありがたいです。
+ブランチ名から自動的にラベルを付ける設定もあります。[PR Labeler settings](.github/pr-labeler.yml) を参照してください。
+
+
+## 開発方法
+
+本リポジトリをUnityプロジェクトのサブモジュールとして Packages/ ディレクトリ下に置いてください。
+
+ターミナルから次のコマンドを実行します。
+
+```bash
+git submodule add https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git Packages/com.nowsprinting.blender-like-sceneview-hotkeys
+```
+
+
+## リリースワークフロー
+
+**Actions > Create release pull request > Run workflow** を実行し、作られたPull Requestをデフォルトブランチにマージすることでリリース処理が実行されます。
+（もしくは、デフォルトブランチのpackage.json内のバージョン番号を書き換えます）
+
+リリース処理は、[Release](.github/workflows/release.yml)ワークフローで自動的に行われます。
+tagが付与されると、OpenUPMがtagを収集して更新してくれます。
+
+以下の操作は手動で行わないでください。
+
+- リリースタグの作成
+- ドラフトリリースの公開
