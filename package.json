@@ -1,21 +1,29 @@
 {
   "name": "com.nowsprinting.blender-like-sceneview-hotkeys",
-  "version": "0.2.2",
-  "displayName": "Blender-like SceneView Hotkeys",
   "description": "Select the viewing direction for a SceneView with the Blender-like hotkeys.\n\nIf your keyboard without a numpad, open preferences... | Blender-like SceneView Hotkeys, and turn on `Emulate Numpad`.\nHowever, in the Unity Editor, already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.\n\nBlenderと同じホットキーでSceneViewの視線方向を切り替えられます。\n\nテンキーが無い場合は、Preferences... | Blender-like SceneView Hotkeys を開き、`Emulate Numpad`をonにすることでキーボードの数字キーで操作できます。\nただし、Unityエディタではすでに`2`キーに機能が割り当てられています。Unity 2019以降であれば Shortcuts Manager で割り当てを変更できます。",
-  "unity": "2018.3",
-  "unityRelease": "0f1",
-  "documentationUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/blob/master/README.md",
+  "version": "0.2.2",
+  "author": "Koji Hasegawa <hasegawa@hubsys.co.jp> (https://github.com/nowsprinting)",
   "changelogUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/releases",
-  "licensesUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/blob/master/LICENSE.md",
-  "license": "MIT",
   "dependencies": {
     "com.unity.settings-manager": "1.0.3"
   },
-  "keywords": [
-    "sceneview",
-    "hotkey",
-    "blender"
+  "displayName": "Blender-like SceneView Hotkeys",
+  "documentationUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/blob/master/README.md",
+  "files": [
+    "Documentation~",
+    "Editor*",
+    "Tests*",
+    "package.json*",
+    "LICENSE*",
+    "README*"
   ],
-  "author": "Koji Hasegawa <hasegawa@hubsys.co.jp> (https://github.com/nowsprinting)"
+  "keywords": [
+    "blender",
+    "hotkey",
+    "sceneview"
+  ],
+  "license": "MIT",
+  "licensesUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/blob/master/LICENSE.md",
+  "unity": "2018.3",
+  "unityRelease": "0f1"
 }
