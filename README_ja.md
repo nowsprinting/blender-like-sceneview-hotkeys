@@ -1,5 +1,7 @@
 # Blender-like SceneView Hotkeys
 
+[![Meta file check](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/metacheck.yml/badge.svg)](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/metacheck.yml)
+[![Test](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/test.yml/badge.svg)](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/test.yml)
 [![openupm](https://img.shields.io/npm/v/com.nowsprinting.blender-like-sceneview-hotkeys?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
 [![BOOTH](https://img.shields.io/badge/-BOOTH-EE524C)](https://ikagoya.booth.pm/items/2644683)
 
@@ -11,49 +13,12 @@
 Click [English](./README.md) for English page if you need.
 
 
-## インストール
+## 機能
 
-3通りの方法でインストールできます
+いくつかの Blender ホットキーが実装されています。
+現時点で実装されているホットキーについては [Documentation](./Documentation~/blender-like-sceneview-hotkeys.md) ページ、もしくはブログ記事『[Blender 的なテンキー操作で視点操作できる Unityエディタ拡張 - やらなイカ？](https://www.nowsprinting.com/entry/2020/09/26/204307)』を参照してください。
 
-### unitypackage を使用する場合
-
-1. OpenUPM のパッケージページ [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/) を開き、右上の "Get installer.unitypackage" をクリックしてダウンロードします
-2. Unityエディタでプロジェクトを開き、ダウンロードした unitypackage ファイルをインポートします
-
-### openupm-cli を使用する場合
-
-1. [openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、ターミナルから下記コマンドを実行します
-
-```bash
-openupm add com.nowsprinting.blender-like-sceneview-hotkeys
-```
-
-### Unity Package Managerで直接指定する場合
-
-#### Unity 2019.3 以降の場合
-
-1. Package Manager ウィンドウを開きます (Window | Package Manager)
-2. 左上の `+` をクリックし、続いて "Add package from git URL..." をクリックします
-
-![](./Documentation~/add_package_from_git_url.png)
-
-3. 表示される入力フィールドに次のURLを入力して `Add` をクリックします
-
-```
-https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git
-```
-
-#### Unity 2019.2 以前の場合
-
-1. Unityエディタを閉じます
-2. テキストエディタで `Packages/manifest.json` ファイルを開きます
-3. `"dependencies": {` の次の行に下の行を追加して保存します
-
-```
-"com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git",
-```
-
-4. 再度、Unityエディタでプロジェクトを開きます
+Blender のホットキーについては [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
 
 
 ## 設定
@@ -63,12 +28,37 @@ https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git
 ただし、Unityエディタではすでに`2`キーに機能が割り当てられています。Unity 2019以降であれば Shortcuts Manager で割り当てを変更できます。
 
 
-## 機能
+## インストール方法
 
-いくつかの Blender ホットキーが実装されています。
-現時点で実装されているホットキーについては [Documentation](./Documentation~/blender-like-sceneview-hotkeys.md) ページ、もしくはブログ記事『[Blender 的なテンキー操作で視点操作できる Unityエディタ拡張 - やらなイカ？](https://www.nowsprinting.com/entry/2020/09/26/204307)』を参照してください。
+主に2通りの方法でインストールできます。
 
-Blender のホットキーについては [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) を参照してください。
+### Package Manager ウィンドウを使用する場合
+
+1. Player Settings ウィンドウ（**Editor > Player Settings**）にある、**Package Manager** タブを開きます
+2. **Scoped Registries** の下にある **+** ボタンをクリックし、次の項目を設定します（図 1）
+   1. **Name:** `package.openupm.com`
+   2. **URL:** `https://package.openupm.com`
+   3. **Scope(s):** `com.nowsprinting`
+3. Package Managerウィンドウを開き（**Window > Package Manager**）、レジストリ選択ドロップダウンで **My Registries** を選択します（図 2）
+4. `com.nowsprinting.blender-like-sceneview-hotkeys` パッケージの **Install** ボタンをクリックします
+
+**図 1.** Player Settings ウィンドウの Package Manager タブ
+
+![](Documentation~/ProjectSettings_Dark.png#gh-dark-mode-only)
+![](Documentation~/ProjectSettings_Light.png#gh-light-mode-only)
+
+**図 2.** Package Manager ウィンドウのレジストリ選択ドロップダウン
+
+![](Documentation~/PackageManager_Dark.png/#gh-dark-mode-only)
+![](Documentation~/PackageManager_Light.png/#gh-light-mode-only)
+
+### openupm-cli を使用する場合
+
+[openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、ターミナルから次のコマンドを実行します。
+
+```bash
+openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```
 
 
 ## ライセンス
@@ -81,7 +71,7 @@ MIT License
 Issue や Pull request を歓迎します。日本語でokです！
 
 
-Pull Requestには `enhancement`, `bug`, `chore`, `documentation` といったラベルを付けてもらえるとありがたいです。
+Pull requestには `enhancement`, `bug`, `chore`, `documentation` といったラベルを付けてもらえるとありがたいです。
 ブランチ名から自動的にラベルを付ける設定もあります。[PR Labeler settings](.github/pr-labeler.yml) を参照してください。
 
 
@@ -98,7 +88,7 @@ git submodule add https://github.com/nowsprinting/blender-like-sceneview-hotkeys
 
 ## リリースワークフロー
 
-**Actions > Create release pull request > Run workflow** を実行し、作られたPull Requestをデフォルトブランチにマージすることでリリース処理が実行されます。
+**Actions > Create release pull request > Run workflow** を実行し、作られたpull requestをデフォルトブランチにマージすることでリリース処理が実行されます。
 （もしくは、デフォルトブランチのpackage.json内のバージョン番号を書き換えます）
 
 リリース処理は、[Release](.github/workflows/release.yml)ワークフローで自動的に行われます。

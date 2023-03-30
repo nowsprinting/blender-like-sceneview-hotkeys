@@ -13,49 +13,12 @@ Numpad 5 as toggle orthographic projection.
 Click [日本語](./README_ja.md) for the Japanese page if you need.
 
 
-## Installation
+## Features
 
-You can install it in 3 ways.
+Some of Blender's hotkeys Implement.
+See [Documentation](./Documentation~/blender-like-sceneview-hotkeys.md) page for implemented hotkeys.
 
-### By unitypackage
-
-1. Get installer.unitypackage from OpenUPM's package page [📦 Blender-like SceneView Hotkeys - com.nowsprinting.blender-like-sceneview-hotkeys | OpenUPM](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
-2. Open your Unity project by Unity Editor, import installer.unitypackage
-
-### By openupm-cli
-
-1. If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run the command below
-
-```bash
-openupm add com.nowsprinting.blender-like-sceneview-hotkeys
-```
-
-### By Unity Package Manager directly
-
-#### Unity 2019.3 or newer
-
-1. Open Package Manager window (Window | Package Manager)
-2. Click `+` on the upper-left of a window, and "Add package from git URL..."
-
-![](./Documentation~/add_package_from_git_url.png)
-
-3. Enter the following URL and click "Add"
-
-```
-https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git
-```
-
-#### Unity 2019.2 or earlier
-
-1. Close Unity Editor
-2. Open `Packages/manifest.json` by any Text editor
-3. Insert the following line after `"dependencies": {`, and save the file.
-
-```
-"com.nowsprinting.blender-like-sceneview-hotkeys": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git",
-```
-
-4. Reopen Unity project in Unity Editor
+See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.
 
 
 ## Settings
@@ -65,12 +28,37 @@ If your keyboard without a Numpad, open preferences... | Blender-like SceneView 
 However, in the Unity Editor, already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.
 
 
-## Features
+## Installation
 
-Some of Blender's hotkeys Implement.
-See [Documentation](./Documentation~/blender-like-sceneview-hotkeys.md) page for implemented hotkeys.
+You can choose from two typical installation methods.
 
-See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/editors/3dview/navigate/index.html) for all Blender's hotkeys.
+### Install via Package Manager window
+
+1. Open the **Package Manager** tab in Player Settings window (**Editor > Player Settings**)
+2. Click **+** button under the **Scoped Registries** and enter the following settings (figure 1.):
+   1. **Name:** `package.openupm.com`
+   2. **URL:** `https://package.openupm.com`
+   3. **Scope(s):** `com.nowsprinting`
+3. Open the Package Manager window (**Window > Package Manager**) and select **My Registries** in registries drop-down list (figure 2.)
+4. Click **Install** button on the `com.nowsprinting.blender-like-sceneview-hotkeys` package
+
+**Fugure 1.** Package Manager tab in Player Settings window.
+
+![](Documentation~/ProjectSettings_Dark.png#gh-dark-mode-only)
+![](Documentation~/ProjectSettings_Light.png#gh-light-mode-only)
+
+**Fugure 2.** Select registries drop-down list in Package Manager window.
+
+![](Documentation~/PackageManager_Dark.png/#gh-dark-mode-only)
+![](Documentation~/PackageManager_Light.png/#gh-light-mode-only)
+
+### Install via OpenUPM-CLI
+
+If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run the command below:
+
+```bash
+openupm add com.nowsprinting.blender-like-sceneview-hotkeys
+```
 
 
 ## License
@@ -82,7 +70,7 @@ MIT License
 
 Open an issue or create a pull request.
 
-Be grateful if you could label the PR as `enhancement`, `bug`, `chore` and `documentation`. See [PR Labeler settings](.github/pr-labeler.yml) for automatically labeling from the branch name.
+Be grateful if you could label the pull request as `enhancement`, `bug`, `chore`, and `documentation`. See [PR Labeler settings](.github/pr-labeler.yml) for automatically labeling from the branch name.
 
 
 ## How to development
@@ -98,7 +86,7 @@ git submodule add https://github.com/nowsprinting/blender-like-sceneview-hotkeys
 
 ## Release workflow
 
-Run `Actions | Create release pull request | Run workflow` and merge created PR.
+Run **Actions > Create release pull request > Run workflow** and merge created pull request.
 (Or bump version in package.json on default branch)
 
 Then, Will do the release process automatically by [Release](.github/workflows/release.yml) workflow.

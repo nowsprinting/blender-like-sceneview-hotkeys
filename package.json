@@ -9,6 +9,14 @@
   },
   "displayName": "Blender-like SceneView Hotkeys",
   "documentationUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/blob/master/README.md",
+  "files": [
+    "Documentation~",
+    "Editor*",
+    "Tests*",
+    "package.json*",
+    "LICENSE*",
+    "README*"
+  ],
   "keywords": [
     "blender",
     "hotkey",
