@@ -5,12 +5,12 @@
 [![openupm](https://img.shields.io/npm/v/com.nowsprinting.blender-like-sceneview-hotkeys?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
 [![BOOTH](https://img.shields.io/badge/-BOOTH-EE524C)](https://ikagoya.booth.pm/items/2644683)
 
-This Unity Editor Extensions allows you to select the viewing direction for a SceneView with the [Blender](https://www.blender.org/) -like hotkeys.
+This Unity Editor extension allows you to select the viewing direction for a SceneView with the [Blender](https://www.blender.org/) -like hotkeys.
 
 e.g. Numpad 1/3/7 as switch front/right/top view.
 Numpad 5 as toggle orthographic projection.
 
-Click [日本語](./README_ja.md) for the Japanese page if you need.
+Click [日本語](./README_ja.md) for the Japanese page if you need it.
 
 
 ## Features
@@ -23,11 +23,11 @@ See [Navigating - Blender Manual](https://docs.blender.org/manual/en/latest/edit
 
 ## Settings
 
-If your keyboard without a Numpad, open
+If your keyboard is without a Numpad, open
 **Preferences > Blender-like SceneView Hotkeys**
 , and turn on **Emulate Numpad**.
 
-However, in the Unity Editor, already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.
+However, the Unity Editor already assigned the `2` key. If you are using Unity 2019 or later, you can change the assignment with Shortcuts Manager.
 
 
 ## Installation
@@ -44,12 +44,12 @@ You can choose from two typical installation methods.
 3. Open the Package Manager window (**Window > Package Manager**) and select **My Registries** in registries drop-down list (figure 2.)
 4. Click **Install** button on the `com.nowsprinting.blender-like-sceneview-hotkeys` package
 
-**Fugure 1.** Package Manager tab in Player Settings window.
+**Figure 1.** Package Manager tab in Player Settings window.
 
 ![](Documentation~/ProjectSettings_Dark.png#gh-dark-mode-only)
 ![](Documentation~/ProjectSettings_Light.png#gh-light-mode-only)
 
-**Fugure 2.** Select registries drop-down list in Package Manager window.
+**Figure 2.** Select registries drop-down list in Package Manager window.
 
 ![](Documentation~/PackageManager_Dark.png/#gh-dark-mode-only)
 ![](Documentation~/PackageManager_Light.png/#gh-light-mode-only)
@@ -92,9 +92,9 @@ Run **Actions > Create release pull request > Run workflow** and merge created p
 (Or bump version in package.json on default branch)
 
 Then, Will do the release process automatically by [Release](.github/workflows/release.yml) workflow.
-And after tagged, OpenUPM retrieves the tag and updates it.
+And after tagging, OpenUPM retrieves the tag and updates it.
 
 Do **NOT** manually operation the following operations:
 
-- Create release tag
+- Create a release tag
 - Publish draft releases
