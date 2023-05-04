@@ -36,7 +36,7 @@ Blender のホットキーについては [Navigating - Blender Manual](https://
 
 ### Package Manager ウィンドウを使用する場合
 
-1. Player Settings ウィンドウ（**Editor > Player Settings**）にある、**Package Manager** タブを開きます
+1. Project Settings ウィンドウ（**Editor > Project Settings**）にある、**Package Manager** タブを開きます
 2. **Scoped Registries** の下にある **+** ボタンをクリックし、次の項目を設定します（図 1）
    1. **Name:** `package.openupm.com`
    2. **URL:** `https://package.openupm.com`
@@ -44,7 +44,7 @@ Blender のホットキーについては [Navigating - Blender Manual](https://
 3. Package Managerウィンドウを開き（**Window > Package Manager**）、レジストリ選択ドロップダウンで **My Registries** を選択します（図 2）
 4. `com.nowsprinting.blender-like-sceneview-hotkeys` パッケージの **Install** ボタンをクリックします
 
-**図 1.** Player Settings ウィンドウの Package Manager タブ
+**図 1.** Project Settings ウィンドウの Package Manager タブ
 
 ![](Documentation~/ProjectSettings_Dark.png#gh-dark-mode-only)
 ![](Documentation~/ProjectSettings_Light.png#gh-light-mode-only)
