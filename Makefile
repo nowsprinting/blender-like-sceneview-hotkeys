@@ -1,7 +1,7 @@
 # Copyright (c) 2020-2023 Koji Hasegawa.
 # This software is released under the MIT License.
 
-PACKAGE_HOME?=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+PACKAGE_HOME?=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT_HOME?=$(PACKAGE_HOME)/UnityProject~
 BUILD_DIR?=$(PROJECT_HOME)/Build
 LOG_DIR?=$(PROJECT_HOME)/Logs
@@ -13,57 +13,75 @@ PACKAGE_NAME?=$(shell grep -o -E '"name": "(.+)"' $(PACKAGE_HOME)/package.json |
 PACKAGE_ASSEMBLIES?=$(shell echo $(shell find $(PACKAGE_HOME) -name "*.asmdef" -maxdepth 3 | sed -e s/.*\\//\+/ | sed -e s/\\.asmdef// | sed -e s/^.*\\.Tests//) | sed -e s/\ /,/g)
 COVERAGE_ASSEMBLY_FILTERS?=$(PACKAGE_ASSEMBLIES),+<assets>,-*.Tests
 
+# -nographics` option
+ifdef NOGRAPHICS
+NOGRAPHICS=-nographics
+endif
+
+# -testCategory option. see https://docs.unity3d.com/Packages/com.unity.test-framework@1.3/manual/reference-command-line.html#testcategory
+ifdef CATEGORY
+TEST_CATEGORY=-testCategory "$(CATEGORY)"
+else
+TEST_CATEGORY=-testCategory "!IgnoreCI;!Integration"
+endif
+
+# -testFilter option. see https://docs.unity3d.com/Packages/com.unity.test-framework@1.3/manual/reference-command-line.html#testfilter
+ifdef FILTER
+TEST_FILTER=-testFilter "$(FILTER)"
+endif
+
+# -assemblyNames option. see https://docs.unity3d.com/Packages/com.unity.test-framework@1.3/manual/reference-command-line.html#assemblynames
+ifdef ASSEMBLY
+ASSEMBLY_NAMES=-assemblyNames "$(ASSEMBLY)"
+endif
+
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
-# macOS
 UNITY_HOME=/Applications/Unity/HUB/Editor/$(UNITY_VERSION)/Unity.app/Contents
 UNITY?=$(UNITY_HOME)/MacOS/Unity
 UNITY_YAML_MERGE?=$(UNITY_HOME)/Tools/UnityYAMLMerge
 STANDALONE_PLAYER=StandaloneOSX
-else
-ifeq ($(UNAME), Linux)
-# Linux: not test yet
+endif
+ifeq ($(UNAME), Linux)  # not test yet
 UNITY_HOME=$HOME/Unity/Hub/Editor/<version>
 UNITY?=$(UNITY_HOME)/Unity
 UNITY_YAML_MERGE?=$(UNITY_HOME)/ # unknown
 STANDALONE_PLAYER=StandaloneLinux64
-else
-# Windows: not test yet
-UNITY_HOME=C:\Program Files\Unity\Hub\Editor\$(UNITY_VERSION)\Editor
-UNITY?=$(UNITY_HOME)\Unity.exe
-UNITY_YAML_MERGE?=$(UNITY_HOME)\Data\Tools\UnityYAMLMerge.exe
-STANDALONE_PLAYER=StandaloneWindows64
-endif
 endif
 
+define base_arguments
+-projectPath $(PROJECT_HOME) \
+-logFile $(LOG_DIR)/test_$(TEST_PLATFORM).log
+endef
+
 define test_arguments
-  -projectPath $(PROJECT_HOME) \
-  -batchmode \
-  -nographics \
-  -silent-crashes \
-  -stackTraceLogType Full \
-  -runTests \
-  -testCategory "!IgnoreCI" \
-  -testPlatform $(TEST_PLATFORM) \
-  -testResults $(LOG_DIR)/test_$(TEST_PLATFORM)_results.xml \
-  -logFile $(LOG_DIR)/test_$(TEST_PLATFORM).log
+-batchmode \
+$(NOGRAPHICS) \
+-silent-crashes \
+-stackTraceLogType Full \
+-runTests \
+$(TEST_CATEGORY) \
+$(TEST_FILTER) \
+$(ASSEMBLY_NAMES) \
+-testPlatform $(TEST_PLATFORM) \
+-testResults $(LOG_DIR)/test_$(TEST_PLATFORM)_results.xml
 endef
 
 define test
   $(eval TEST_PLATFORM=$1)
-  $(eval TEST_ARGUMENTS=$(call test_arguments))
   mkdir -p $(LOG_DIR)
   $(UNITY) \
-    $(TEST_ARGUMENTS)
+    $(call base_arguments) \
+    $(call test_arguments)
 endef
 
 define cover
   $(eval TEST_PLATFORM=$1)
-  $(eval TEST_ARGUMENTS=$(call test_arguments))
   mkdir -p $(LOG_DIR)
   $(UNITY) \
-    $(TEST_ARGUMENTS) \
-    -burst-disable-compilation \
+    $(call base_arguments) \
+    $(call test_arguments) \
+    --burst-disable-compilation \
     -debugCodeOptimization \
     -enableCodeCoverage \
     -coverageResultsPath $(LOG_DIR) \
@@ -73,7 +91,7 @@ endef
 define cover_report
   mkdir -p $(LOG_DIR)
   $(UNITY) \
-    -projectPath $(PROJECT_HOME) \
+    $(call base_arguments) \
     -batchmode \
     -quit \
     -enableCodeCoverage \
@@ -88,11 +106,12 @@ usage:
 	@echo "  remove_project: Remove created project."
 	@echo "  clean: Clean Build and Logs directories in created project."
 	@echo "  setup_unityyamlmerge: Setup UnityYAMLMerge as mergetool in .git/config."
-	@echo "  open_editor: Open this project in Unity editor."
+	@echo "  open: Open this project in Unity editor."
 	@echo "  test_editmode: Run Edit Mode tests."
 	@echo "  test_playmode: Run Play Mode tests."
 	@echo "  cover_report: Create code coverage HTML report."
 	@echo "  test: Run test_editmode, test_playmode, and cover_report. Recommended to use with '-k' option."
+	@echo "  test_standalone_player: Run Play Mode tests on standalone player."
 
 # Create Unity project for run UPM package tests. And upgrade and add dependencies for tests.
 # Required install [openupm-cli](https://github.com/openupm/openupm-cli).
@@ -122,9 +141,10 @@ setup_unityyamlmerge:
 	git config --local mergetool.unityyamlmerge.trustExitCode false
 	git config --local mergetool.unityyamlmerge.cmd '$(UNITY_YAML_MERGE) merge -p "$$BASE" "$$REMOTE" "$$LOCAL" "$$MERGED"'
 
-.PHONY: open_editor
-open_editor:
-	$(UNITY) -projectPath $(PROJECT_HOME) -logFile $(LOG_DIR)/editor.log &
+.PHONY: open
+open:
+	mkdir -p $(LOG_DIR)
+	$(UNITY) $(call base_arguments) &
 
 .PHONY: test_editmode
 test_editmode:
@@ -143,3 +163,9 @@ cover_report:
 # it will run through to Html report generation and return an exit code indicating an error.
 .PHONY: test
 test: test_editmode test_playmode cover_report
+
+# Run Play Mode tests on standalone player
+# Run test because code coverage package is not support run on standalone player.
+.PHONY: test_standalone_player
+test_standalone_player:
+	$(call test,$(STANDALONE_PLAYER))
