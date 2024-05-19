@@ -10,13 +10,13 @@
   "displayName": "Blender-like SceneView Hotkeys",
   "documentationUrl": "https://github.com/nowsprinting/blender-like-sceneview-hotkeys/blob/master/README.md",
   "files": [
-    "Documentation~",
-    "Editor",
-    "Editor*",
-    "Tests",
-    "Tests*",
+    "Documentation~/",
+    "Editor/",
+    "Editor.meta",
+    "Tests/",
+    "Tests.meta",
+    "LICENSE.md*",
     "package.json*",
-    "LICENSE*",
     "README*"
   ],
   "keywords": [
