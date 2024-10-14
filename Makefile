@@ -121,10 +121,10 @@ create_project:
 	  -createProject $(PROJECT_HOME) \
 	  -batchmode \
 	  -quit
-	touch UnityProject~/Assets/.gitkeep
-	openupm -c $(PROJECT_HOME) add -f com.unity.test-framework@stable
-	openupm -c $(PROJECT_HOME) add -f com.unity.testtools.codecoverage
-	openupm -c $(PROJECT_HOME) add -ft $(PACKAGE_NAME)@file:../../
+	touch $(PROJECT_HOME)/Assets/.gitkeep
+	openupm add -c $(PROJECT_HOME) -f com.unity.test-framework@stable
+	openupm add -c $(PROJECT_HOME) -f com.unity.testtools.codecoverage
+	openupm add -c $(PROJECT_HOME) -ft $(PACKAGE_NAME)@file:../../
 
 .PHONY: remove_project
 remove_project:
