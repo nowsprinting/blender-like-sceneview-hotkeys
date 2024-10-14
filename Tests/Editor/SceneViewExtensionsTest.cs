@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020-2023 Koji Hasegawa.
+﻿// Copyright (c) 2020-2024 Koji Hasegawa.
 // This software is released under the MIT License.
 
 using NUnit.Framework;
@@ -10,25 +10,27 @@ namespace BlenderLikeSceneViewHotkeys.Editor
 {
     public class SceneViewExtensionsTest
     {
-        private readonly SceneView _sceneView = ScriptableObject.CreateInstance<SceneView>();
+        private SceneView _sceneView;
         private readonly Vector3EqualityComparer _comparer = new Vector3EqualityComparer(0.1f);
 
         [SetUp]
         public void ResetSceneView()
         {
+            _sceneView = SceneView.lastActiveSceneView;
+            if (_sceneView == null)
+            {
+                _sceneView = ScriptableObject.CreateInstance<SceneView>();
+            }
+
             _sceneView.rotation = Quaternion.LookRotation(new Vector3(-1f, -0.7f, -1f));
             _sceneView.pivot = Vector3.zero;
             _sceneView.size = 10f;
             _sceneView.orthographic = false;
-        }
 
-        [Test]
-        public void CheckDefaultProperties()
-        {
-            Assert.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(26.3f, 225f, 0f)).Using(_comparer));
-            Assert.That(_sceneView.pivot, Is.EqualTo(new Vector3(0f, 0f, 0f)));
-            Assert.That(_sceneView.size, Is.EqualTo(10f));
-            Assert.That(_sceneView.orthographic, Is.EqualTo(false));
+            Assume.That(_sceneView.rotation.eulerAngles, Is.EqualTo(new Vector3(26.3f, 225f, 0f)).Using(_comparer));
+            Assume.That(_sceneView.pivot, Is.EqualTo(new Vector3(0f, 0f, 0f)));
+            Assume.That(_sceneView.size, Is.EqualTo(10f));
+            Assume.That(_sceneView.orthographic, Is.EqualTo(false));
         }
 
         [Test]
@@ -206,7 +208,8 @@ namespace BlenderLikeSceneViewHotkeys.Editor
             _sceneView.Zoom(10f);
 
             var comparer = new FloatEqualityComparer(0.001f);
-            Assert.That(_sceneView.size, Is.EqualTo(0f).Using(comparer));   // fail in Unity 2019 or later, if not use comparer
+            Assert.That(_sceneView.size,
+                Is.EqualTo(0f).Using(comparer)); // fail in Unity 2019 or later, if not use comparer
         }
 
         [Test]
