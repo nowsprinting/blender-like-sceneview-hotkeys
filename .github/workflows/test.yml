@@ -74,7 +74,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g openupm-cli
-          openupm add -f com.unity.test-framework
+          openupm add -f com.unity.test-framework@stable
           openupm add -f com.unity.testtools.codecoverage
         working-directory: ${{ env.CREATED_PROJECT_PATH }}
 
