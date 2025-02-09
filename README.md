@@ -51,8 +51,8 @@ You can choose from two typical installation methods.
 
 **Figure 2.** Select registries drop-down list in Package Manager window.
 
-![](Documentation~/PackageManager_Dark.png/#gh-dark-mode-only)
-![](Documentation~/PackageManager_Light.png/#gh-light-mode-only)
+![](Documentation~/PackageManager_Dark.png#gh-dark-mode-only)
+![](Documentation~/PackageManager_Light.png#gh-light-mode-only)
 
 ### Install via OpenUPM-CLI
 
@@ -77,24 +77,41 @@ Be grateful if you could label the pull request as `enhancement`, `bug`, `chore`
 
 ## How to development
 
+### Clone repo as a embedded package
+
 Add this repository as a submodule to the Packages/ directory in your project.
 
 Run the command below:
 
 ```bash
-git submodule add https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git Packages/com.nowsprinting.blender-like-sceneview-hotkeys
+git submodule add git@github.com:nowsprinting/blender-like-sceneview-hotkeys.git Packages/com.nowsprinting.blender-like-sceneview-hotkeys
 ```
 
 
-## Release workflow
+### Run tests
 
-Run **Actions > Create release pull request > Run workflow** and merge created pull request.
-(Or bump version in package.json on default branch)
+Generate a temporary project and run tests on each Unity version from the command line.
 
-Then, Will do the release process automatically by [Release](.github/workflows/release.yml) workflow.
-And after tagging, OpenUPM retrieves the tag and updates it.
+```bash
+make create_project
+UNITY_VERSION=2019.4.40f1 make -k test
+```
 
-Do **NOT** manually operation the following operations:
 
-- Create a release tag
-- Publish draft releases
+### Release workflow
+
+The release process is as follows:
+
+1. Run **Actions > Create release pull request > Run workflow**
+2. Merge created pull request
+
+Then, will do the release process automatically by [Release](.github/workflows/release.yml) workflow.
+After tagging, [OpenUPM](https://openupm.com/) retrieves the tag and updates it.
+
+> [!CAUTION]  
+> Do **NOT** manually operation the following operations:
+> - Create a release tag
+> - Publish draft releases
+
+> [!CAUTION]  
+> You must modify the package name to publish a forked package.
