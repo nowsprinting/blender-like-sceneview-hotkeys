@@ -51,8 +51,8 @@ Blender のホットキーについては [Navigating - Blender Manual](https://
 
 **図 2.** Package Manager ウィンドウのレジストリ選択ドロップダウン
 
-![](Documentation~/PackageManager_Dark.png/#gh-dark-mode-only)
-![](Documentation~/PackageManager_Light.png/#gh-light-mode-only)
+![](Documentation~/PackageManager_Dark.png#gh-dark-mode-only)
+![](Documentation~/PackageManager_Light.png#gh-light-mode-only)
 
 ### openupm-cli を使用する場合
 
@@ -79,24 +79,40 @@ Pull requestには `enhancement`, `bug`, `chore`, `documentation` といった�
 
 ## 開発方法
 
-本リポジトリをUnityプロジェクトのサブモジュールとして Packages/ ディレクトリ下に置いてください。
+### リポジトリを埋め込みパッケージとしてクローン
 
+本リポジトリをUnityプロジェクトのサブモジュールとして Packages/ ディレクトリ下に置いてください。
 ターミナルから次のコマンドを実行します。
 
 ```bash
-git submodule add https://github.com/nowsprinting/blender-like-sceneview-hotkeys.git Packages/com.nowsprinting.blender-like-sceneview-hotkeys
+git submodule add git@github.com:nowsprinting/blender-like-sceneview-hotkeys.git Packages/com.nowsprinting.blender-like-sceneview-hotkeys
 ```
 
 
-## リリースワークフロー
+### テスト
 
-**Actions > Create release pull request > Run workflow** を実行し、作られたpull requestをデフォルトブランチにマージすることでリリース処理が実行されます。
-（もしくは、デフォルトブランチのpackage.json内のバージョン番号を書き換えます）
+次のコマンドで、 テスト用のプロジェクトを生成して指定したUnityバージョンでテストを実行します。
 
-リリース処理は、[Release](.github/workflows/release.yml)ワークフローで自動的に行われます。
-tagが付与されると、OpenUPMがtagを収集して更新してくれます。
+```bash
+make create_project
+UNITY_VERSION=2019.4.40f1 make -k test
+```
 
-以下の操作は手動で行わないでください。
 
-- リリースタグの作成
-- ドラフトリリースの公開
+### リリースワークフロー
+
+次の手順でリリースします。
+
+1. **Actions > Create release pull request > Run workflow** を実行
+2. 生成されたプルリクエストをマージ
+
+リリース処理は、[Release](.github/workflows/release.yml) ワークフローで自動的に行われます。
+tagが付与されると、[OpenUPM](https://openupm.com/) がtagを収集して更新してくれます。
+
+> [!CAUTION]  
+> 次の操作は手動で行わないでください
+> - リリースタグの作成
+> - ドラフトリリースの公開
+
+> [!CAUTION]  
+> フォークしたパッケージを公開する場合は、パッケージ名を変更する必要があります
