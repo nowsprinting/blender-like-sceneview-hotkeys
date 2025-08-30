@@ -33,35 +33,23 @@ Blender のホットキーについては [Navigating - Blender Manual](https://
 
 ## インストール方法
 
-主に2通りの方法でインストールできます。
-
-### Package Manager ウィンドウを使用する場合
-
-1. Project Settings ウィンドウ（**Editor > Project Settings**）にある、**Package Manager** タブを開きます
-2. **Scoped Registries** の下にある **+** ボタンをクリックし、次の項目を設定します（図 1）
+1. Project Settings ウィンドウ（**Editor > Project Settings**）にある、**Package Manager** タブを開きます（図 1）
+2. **Scoped Registries** の下にある **+** ボタンをクリックし、次の項目を設定します
    1. **Name:** `package.openupm.com`
    2. **URL:** `https://package.openupm.com`
    3. **Scope(s):** `com.nowsprinting`
-3. Package Managerウィンドウを開き（**Window > Package Manager**）、レジストリ選択ドロップダウンで **My Registries** を選択します（図 2）
-4. `com.nowsprinting.blender-like-sceneview-hotkeys` パッケージの **Install** ボタンをクリックします
+3. Package Managerウィンドウ（**Window > Package Manager**）にある、 **My Registries** タブを開きます（図 2）
+4. **Blender-like SceneView Hotkeys** を選択して **Install** ボタンをクリックします
 
-**図 1.** Project Settings ウィンドウの Package Manager タブ
+**図 1.** Project Settings ウィンドウの Scoped Registries 設定
 
-![](Documentation~/ProjectSettings_Dark.png#gh-dark-mode-only)
-![](Documentation~/ProjectSettings_Light.png#gh-light-mode-only)
+![](Documentation~/ScopedRegistries_Dark.png#gh-dark-mode-only)
+![](Documentation~/ScopedRegistries_Light.png#gh-light-mode-only)
 
-**図 2.** Package Manager ウィンドウのレジストリ選択ドロップダウン
+**図 2.** Package Manager ウィンドウの My Registries
 
 ![](Documentation~/PackageManager_Dark.png#gh-dark-mode-only)
 ![](Documentation~/PackageManager_Light.png#gh-light-mode-only)
-
-### openupm-cli を使用する場合
-
-[openupm-cli](https://github.com/openupm/openupm-cli) がインストールされている状態で、ターミナルから次のコマンドを実行します。
-
-```bash
-openupm add com.nowsprinting.blender-like-sceneview-hotkeys
-```
 
 
 ## ライセンス
