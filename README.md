@@ -4,6 +4,7 @@
 [![Test](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/test.yml/badge.svg)](https://github.com/nowsprinting/blender-like-sceneview-hotkeys/actions/workflows/test.yml)
 [![openupm](https://img.shields.io/npm/v/com.nowsprinting.blender-like-sceneview-hotkeys?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.nowsprinting.blender-like-sceneview-hotkeys/)
 [![BOOTH](https://img.shields.io/badge/-BOOTH-EE524C)](https://ikagoya.booth.pm/items/2644683)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nowsprinting/blender-like-sceneview-hotkeys)
 
 This Unity Editor extension allows you to select the viewing direction for a SceneView with the [Blender](https://www.blender.org/) -like hotkeys.
 
@@ -32,35 +33,23 @@ However, the Unity Editor already assigned the `2` key. If you are using Unity 2
 
 ## Installation
 
-You can choose from two typical installation methods.
+1. Open the Project Settings window (**Editor > Project Settings**) and select **Package Manager** tab (figure 1.)
+2. Click **+** button under the **Scoped Registries** and enter the following settings:
+    1. **Name:** `package.openupm.com`
+    2. **URL:** `https://package.openupm.com`
+    3. **Scope(s):** `com.nowsprinting`
+3. Open the Package Manager window (**Window > Package Manager**) and select **My Registries** tab (figure 2.)
+4. Select **Blender-like SceneView Hotkeys** and click the **Install** button
 
-### Install via Package Manager window
+**Figure 1.** Scoped Registries setting in Project Settings window
 
-1. Open the **Package Manager** tab in Project Settings window (**Editor > Project Settings**)
-2. Click **+** button under the **Scoped Registries** and enter the following settings (figure 1.):
-   1. **Name:** `package.openupm.com`
-   2. **URL:** `https://package.openupm.com`
-   3. **Scope(s):** `com.nowsprinting`
-3. Open the Package Manager window (**Window > Package Manager**) and select **My Registries** in registries drop-down list (figure 2.)
-4. Click **Install** button on the `com.nowsprinting.blender-like-sceneview-hotkeys` package
+![](Documentation~/ScopedRegistries_Dark.png#gh-dark-mode-only)
+![](Documentation~/ScopedRegistries_Light.png#gh-light-mode-only)
 
-**Figure 1.** Package Manager tab in Project Settings window.
-
-![](Documentation~/ProjectSettings_Dark.png#gh-dark-mode-only)
-![](Documentation~/ProjectSettings_Light.png#gh-light-mode-only)
-
-**Figure 2.** Select registries drop-down list in Package Manager window.
+**Figure 2.** My Registries in Package Manager window
 
 ![](Documentation~/PackageManager_Dark.png#gh-dark-mode-only)
 ![](Documentation~/PackageManager_Light.png#gh-light-mode-only)
-
-### Install via OpenUPM-CLI
-
-If you installed [openupm-cli](https://github.com/openupm/openupm-cli), run the command below:
-
-```bash
-openupm add com.nowsprinting.blender-like-sceneview-hotkeys
-```
 
 
 ## License
