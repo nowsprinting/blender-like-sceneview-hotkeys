@@ -52,7 +52,7 @@ jobs:
 
     steps:
       - name: Create project for test
-        uses: nowsprinting/create-unity-project-action@e6a2ccac5eaa666d219b4bee94781bfb3b768c86 # v3
+        uses: nowsprinting/create-unity-project-action@95f60602e491564583a15ee611a21c23c2f5d5d4 # v4
         with:
           project-path: .
 
