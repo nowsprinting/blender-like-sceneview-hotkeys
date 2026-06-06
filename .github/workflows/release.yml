@@ -1,4 +1,4 @@
-# Copyright (c) 2020-2025 Koji Hasegawa.
+# Copyright (c) 2020-2026 Koji Hasegawa.
 # This software is released under the MIT License.
 
 name: Release if bump version number
@@ -19,7 +19,7 @@ defaults:
 jobs:
   check-bump-version:
     if: github.repository_owner == 'nowsprinting' # Skip on forked repo
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: read
@@ -27,7 +27,7 @@ jobs:
       new-version: ${{ steps.diff.outputs.version }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 100
 
@@ -40,7 +40,7 @@ jobs:
   release:
     needs: check-bump-version
     if: ${{ needs.check-bump-version.outputs.new-version }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: write

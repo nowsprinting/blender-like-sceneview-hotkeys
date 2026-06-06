@@ -1,4 +1,4 @@
-# Copyright (c) 2020-2025 Koji Hasegawa.
+# Copyright (c) 2020-2026 Koji Hasegawa.
 # This software is released under the MIT License.
 
 name: PR Labeler
@@ -16,7 +16,7 @@ defaults:
 jobs:
   pr-labeler:
     if: github.event.pull_request.head.repo.fork == false # Skip on public fork
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: read
