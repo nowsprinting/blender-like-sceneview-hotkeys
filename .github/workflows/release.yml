@@ -24,6 +24,7 @@ jobs:
     permissions:
       contents: read
     outputs:
+      package-name: ${{ steps.metadata.outputs.name }}
       new-version: ${{ steps.diff.outputs.version }}
 
     steps:
@@ -31,28 +32,96 @@ jobs:
         with:
           fetch-depth: 100
 
+      - name: Get package name
+        run: |
+          echo "name=$(jq -r '.name' package.json)" >> "$GITHUB_OUTPUT"
+        id: metadata
+
       - name: Get version number diff
         run: |
           version="$(git diff ${{ github.event.before }}..${{ github.event.after }} package.json | sed -nr '/^\+ +\"version\":/p' | sed -r 's/^.*\"([0-9a-z\.\-\+]+)\"*.$/\1/')"
           echo "version=$version" >> "$GITHUB_OUTPUT"
         id: diff
 
-  release:
+  sign:
     needs: check-bump-version
     if: ${{ needs.check-bump-version.outputs.new-version }}
     runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: write
+    env:
+      DIST_DIR: /tmp/signed-upm-dist
+
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Install Unity UPM CLI
+        run: |
+          curl -fsSL https://cdn.packages.unity.com/upm-cli/install.sh -o /tmp/install.sh
+          bash /tmp/install.sh v9.32.0
+          echo "$HOME/.upm/bin" >> "$GITHUB_PATH"
+
+      - name: Verify Unity UPM CLI
+        run: upm --help
+
+      - name: Sign package
+        run: |
+          mkdir -p "$DIST_DIR"
+          upm pack . --organization-id "$UPM_ORG_ID" --destination "$DIST_DIR"
+        env:
+          UPM_SERVICE_ACCOUNT_KEY_ID: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_ID }}
+          UPM_SERVICE_ACCOUNT_KEY_SECRET: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_SECRET }}
+          UPM_ORG_ID: ${{ secrets.UPM_ORG_ID }}
+
+      - name: Print signed package info
+        run: |
+          shopt -s nullglob
+          archives=("$DIST_DIR"/*.tgz "$DIST_DIR"/*.tar.gz)
+          if [ "${#archives[@]}" -ne 1 ]; then
+            printf 'Expected exactly one signed package archive, found %s\n' "${#archives[@]}" >&2
+            exit 1
+          fi
+
+          archive="${archives[0]}"
+          listing="$(tar -tzf "$archive")"  # Grep reads from a captured listing, not tar's pipe directly; otherwise, grep -q would close the pipe early and kill tar with SIGPIPE.
+          grep -qx 'package/package.json' <<<"$listing"
+          grep -qx 'package/.attestation.p7m' <<<"$listing"
+
+          echo "PACKAGE_ARCHIVE=$archive" >> "$GITHUB_ENV"
+          printf 'Archive: %s\n' "$(basename "$archive")"
+          tar -xOzf "$archive" package/package.json | jq '{name, version}'
+
+      - name: Upload signed package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # release-drafter keeps one draft release per upcoming version, tagged to match package.json ahead of publish.
+          gh release upload "v${{ needs.check-bump-version.outputs.new-version }}" "$PACKAGE_ARCHIVE"
+
+  release:
+    needs: [check-bump-version, sign]
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      contents: write
       pull-requests: read
       actions: read
+      id-token: write
+    env:
+      RELEASE_VERSION_TAG: v${{ needs.check-bump-version.outputs.new-version }}
 
     steps:
       - uses: release-drafter/release-drafter@693d20e7c1ce1a81d3a41962f85914253b518449 # v7
         with:
           config-name: release-drafter.yml
-          version: v${{ needs.check-bump-version.outputs.new-version }}
+          version: ${{ env.RELEASE_VERSION_TAG }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # After tagged, openupm.com gets the tag and automatically publishes the UPM package.
+
+      - name: Publish package
+        uses: openupm/openupm-action@89b79dc8dd6cb319efff06727f8fa0051ce7e517 # v1.0.1
+        with:
+          package: ${{ needs.check-bump-version.outputs.package-name }}
+          tag: ${{ env.RELEASE_VERSION_TAG }}
